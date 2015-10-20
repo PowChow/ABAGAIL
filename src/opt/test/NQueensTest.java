@@ -75,7 +75,7 @@ public class NQueensTest {
 //       // System.out.println(ef.boardPositions());
 //        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
-        System.out.println("============================");
+//        System.out.println("============================");
         
         //SIMULATED ANNEALING
         SimulatedAnnealing sa = new SimulatedAnnealing(1E1, .1, hcp);
