@@ -47,6 +47,9 @@ public class MaxKColoringTest {
      * @param args ignored
      */
     public static void main(String[] args) {
+    	int it = args.length > 0 ? Integer.parseInt(args[0]): 1000;
+    	double start, end, trainingTime, accuracy;
+    	
         Random random = new Random(N*L);
         // create the random velocity
         Vertex[] vertices = new Vertex[N];
@@ -74,40 +77,72 @@ public class MaxKColoringTest {
         Distribution df = new DiscreteDependencyTree(.1); 
         ProbabilisticOptimizationProblem pop = new GenericProbabilisticOptimizationProblem(ef, odd, df);
         
+        //RANDOMIZED HILL CLIMBING
         long starttime = System.currentTimeMillis();
         RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
-        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 20000);
+        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, it);
+        
+        start = System.nanoTime();
         fit.train();
+        end = System.nanoTime();
+        trainingTime = end - start;
+        trainingTime /= Math.pow(10, 9);
+        System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
+        
         System.out.println("RHC: " + ef.value(rhc.getOptimal()));
         System.out.println(ef.foundConflict());
         System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
         System.out.println("============================");
         
+        //SIMULATED ANNEALING
         starttime = System.currentTimeMillis();
         SimulatedAnnealing sa = new SimulatedAnnealing(1E12, .1, hcp);
-        fit = new FixedIterationTrainer(sa, 20000);
+        fit = new FixedIterationTrainer(sa, it);
+        
+        start = System.nanoTime();
         fit.train();
+        end = System.nanoTime();
+        trainingTime = end - start;
+        trainingTime /= Math.pow(10, 9);
+        
+        System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
         System.out.println("SA: " + ef.value(sa.getOptimal()));
         System.out.println(ef.foundConflict());
         System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
         System.out.println("============================");
         
+        //GENETIC ALGORITHM
         starttime = System.currentTimeMillis();
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 10, 60, gap);
-        fit = new FixedIterationTrainer(ga, 50);
+        fit = new FixedIterationTrainer(ga, it);
+        
+        start = System.nanoTime();
         fit.train();
+        end = System.nanoTime();
+        trainingTime = end - start;
+        trainingTime /= Math.pow(10, 9);
+        
+        System.out.printf("%s,%d,%.2f,%.2f\n","GA",it, trainingTime, ef.value(ga.getOptimal()));
         System.out.println("GA: " + ef.value(ga.getOptimal()));
         System.out.println(ef.foundConflict());
         System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
         System.out.println("============================");
         
+        //MIMIC
         starttime = System.currentTimeMillis();
         MIMIC mimic = new MIMIC(200, 100, pop);
-        fit = new FixedIterationTrainer(mimic, 5);
+        fit = new FixedIterationTrainer(mimic, it);
+
+        start = System.nanoTime();
         fit.train();
+        end = System.nanoTime();
+        trainingTime = end - start;
+        trainingTime /= Math.pow(10, 9);
+        
+        System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
         System.out.println("MIMIC: " + ef.value(mimic.getOptimal()));  
         System.out.println(ef.foundConflict());
         System.out.println("Time : "+ (System.currentTimeMillis() - starttime));

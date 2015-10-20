@@ -56,8 +56,7 @@ public class ContinuousPeaksTest {
         
         //RANDOMIZED HILL CLIMBING
         RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
-        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 200000);
-        fit.train();
+        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, it);
         //System.out.println(ef.value(rhc.getOptimal()));
         
         start = System.nanoTime();
@@ -65,21 +64,19 @@ public class ContinuousPeaksTest {
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        
         System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
         
         //SIMULATED ANNEALING
         SimulatedAnnealing sa = new SimulatedAnnealing(1E11, .95, hcp);
         fit = new FixedIterationTrainer(sa, it);
+        //System.out.println(ef.value(sa.getOptimal()));
         
         start = System.nanoTime();
         fit.train();
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        
         System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
-        //System.out.println(ef.value(sa.getOptimal()));
         
         //GENETIC ALGORITHM
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 100, 10, gap);
