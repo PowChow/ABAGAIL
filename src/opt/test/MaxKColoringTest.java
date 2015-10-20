@@ -89,11 +89,11 @@ public class MaxKColoringTest {
         trainingTime /= Math.pow(10, 9);
         System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
         
-        System.out.println("RHC: " + ef.value(rhc.getOptimal()));
-        System.out.println(ef.foundConflict());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
-        
-        System.out.println("============================");
+//        System.out.println("RHC: " + ef.value(rhc.getOptimal()));
+//        System.out.println(ef.foundConflict());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        
+//        System.out.println("============================");
         
         //SIMULATED ANNEALING
         starttime = System.currentTimeMillis();
@@ -105,13 +105,13 @@ public class MaxKColoringTest {
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        
         System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
-        System.out.println("SA: " + ef.value(sa.getOptimal()));
-        System.out.println(ef.foundConflict());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
-        System.out.println("============================");
+//        System.out.println("SA: " + ef.value(sa.getOptimal()));
+//        System.out.println(ef.foundConflict());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        
+//        System.out.println("============================");
         
         //GENETIC ALGORITHM
         starttime = System.currentTimeMillis();
@@ -123,13 +123,13 @@ public class MaxKColoringTest {
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        
         System.out.printf("%s,%d,%.2f,%.2f\n","GA",it, trainingTime, ef.value(ga.getOptimal()));
-        System.out.println("GA: " + ef.value(ga.getOptimal()));
-        System.out.println(ef.foundConflict());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
-        System.out.println("============================");
+//        System.out.println("GA: " + ef.value(ga.getOptimal()));
+//        System.out.println(ef.foundConflict());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        
+//        System.out.println("============================");
         
         //MIMIC
         starttime = System.currentTimeMillis();
@@ -141,11 +141,11 @@ public class MaxKColoringTest {
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        
         System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
-        System.out.println("MIMIC: " + ef.value(mimic.getOptimal()));  
-        System.out.println(ef.foundConflict());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+        
+//        System.out.println("MIMIC: " + ef.value(mimic.getOptimal()));  
+//        System.out.println(ef.foundConflict());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
     }
 }

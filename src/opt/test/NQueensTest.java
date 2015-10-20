@@ -70,10 +70,10 @@ public class NQueensTest {
         trainingTime /= Math.pow(10, 9);
         System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
         
-        System.out.println("RHC: " + ef.value(rhc.getOptimal()));
-        System.out.println("RHC: Board Position: ");
-       // System.out.println(ef.boardPositions());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        System.out.println("RHC: " + ef.value(rhc.getOptimal()));
+//        System.out.println("RHC: Board Position: ");
+//       // System.out.println(ef.boardPositions());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
         
         System.out.println("============================");
         
@@ -90,12 +90,12 @@ public class NQueensTest {
         trainingTime /= Math.pow(10, 9);
         System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
         
-        System.out.println("SA: " + ef.value(sa.getOptimal()));
-        System.out.println("SA: Board Position: ");
-        //System.out.println(ef.boardPositions());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
-        
-        System.out.println("============================");
+//        System.out.println("SA: " + ef.value(sa.getOptimal()));
+//        System.out.println("SA: Board Position: ");
+//        //System.out.println(ef.boardPositions());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        
+//        System.out.println("============================");
         
         //GENETIC ALGO
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 0, 10, gap);
@@ -110,12 +110,12 @@ public class NQueensTest {
         trainingTime /= Math.pow(10, 9);
         System.out.printf("%s,%d,%.2f,%.2f\n","GA",it, trainingTime, ef.value(ga.getOptimal()));
         
-        System.out.println("GA: " + ef.value(ga.getOptimal()));
-        System.out.println("GA: Board Position: ");
-        //System.out.println(ef.boardPositions());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
-        
-        System.out.println("============================");
+//        System.out.println("GA: " + ef.value(ga.getOptimal()));
+//        System.out.println("GA: Board Position: ");
+//        //System.out.println(ef.boardPositions());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        
+//        System.out.println("============================");
         
         //MIMIC
         MIMIC mimic = new MIMIC(200, 10, pop);
@@ -130,9 +130,9 @@ public class NQueensTest {
         trainingTime /= Math.pow(10, 9);
         System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
         
-        System.out.println("MIMIC: " + ef.value(mimic.getOptimal()));
-        System.out.println("MIMIC: Board Position: ");
-        //System.out.println(ef.boardPositions());
-        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
+//        System.out.println("MIMIC: " + ef.value(mimic.getOptimal()));
+//        System.out.println("MIMIC: Board Position: ");
+//        //System.out.println(ef.boardPositions());
+//        System.out.println("Time : "+ (System.currentTimeMillis() - starttime));
     }
 }
