@@ -8,3 +8,5 @@ ABAGAIL.jar
 *.ear
 manifest.mf
 /bin
+build.xml
+build.xml.bak
