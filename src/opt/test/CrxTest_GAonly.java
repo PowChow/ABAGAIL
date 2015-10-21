@@ -82,13 +82,13 @@ public class CrxTest_GAonly {
             nnop[i] = new NeuralNetworkOptimizationProblem(set, networks[i], measure);
         }
 
-//        oa[0] = new RandomizedHillClimbing(nnop[0]);
-//        oa[1] = new SimulatedAnnealing(1E11, .95, nnop[1]);
+        oa[0] = new RandomizedHillClimbing(nnop[0]);
+        oa[1] = new SimulatedAnnealing(1E11, .95, nnop[1]);
         
-        //double the initialization pop - yes -> from 200 to 1000
-        //vary the recombination size for mutate and/or mate
-        //increase the gap
-        // initialize, tomate, to muate, gap
+        /*double the initialization pop - yes -> from 200 to 1000
+        vary the recombination size for mutate and/or mate
+        increase the gap
+        initialize, tomate, to muate, gap */
         oa[2] = new StandardGeneticAlgorithm(1000, 100, 10, nnop[2]);
 
         for(int i = 0; i < oa.length; i++) {
