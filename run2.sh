@@ -1,8 +1,9 @@
-CORES=2
-OUTPUT=${OUTPUT:-results}
+CORES=16
+OUTPUT=$HOME/${OUTPUT:-results_new}
 
 array=(
-    ContinuousPeaksTest
+     CrxTest
+#    ContinuousPeaksTest
 #    CountOnesTest
 #    FlipFlopTest
 #    FourPeaksTest
@@ -18,7 +19,7 @@ mkdir -p ${OUTPUT}
 count=0
 
 function set_header {
-    if [[ $1 = "AssignmentTwo" ]]; then
+    if [[ $1 = "CrxTest" ]]; then
         echo "algorithm,iterations,training error,testing error,training time,testing time" > ${OUTPUT}/${1}.csv
     else
         echo "algorithm,iterations,time,optim" > ${OUTPUT}/${1}.csv
@@ -26,7 +27,7 @@ function set_header {
 }
 
 for j in "${array[@]}";do
-    for i in $(seq 1);do
+    for i in $(seq 1 20 10001);do
         count=$((count+1))
 
         if [[ $count -eq 0 ]]; then
