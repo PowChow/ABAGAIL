@@ -2,7 +2,8 @@ CORES=2
 OUTPUT=${OUTPUT:-results}
 
 array=(
-    ContinuousPeaksTest
+     CrxTest_GAonly
+#    ContinuousPeaksTest
 #    CountOnesTest
 #    FlipFlopTest
 #    FourPeaksTest
