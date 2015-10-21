@@ -82,6 +82,7 @@ public class CrxTest {
             nnop[i] = new NeuralNetworkOptimizationProblem(set, networks[i], measure);
         }
 
+        //updated
         //oa[0] = new RandomizedHillClimbing(nnop[0]);
         oa[1] = new SimulatedAnnealing(1, 2, nnop[1]);
         oa[2] = new StandardGeneticAlgorithm(2500, 100, 10, nnop[2]);
