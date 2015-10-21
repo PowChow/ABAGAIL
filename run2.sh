@@ -2,7 +2,11 @@ CORES=16
 OUTPUT=$HOME/${OUTPUT:-results_new}
 
 array=(
+<<<<<<< HEAD
      CrxTest
+=======
+     CrxTest_GAonly
+>>>>>>> fd1351a731219b49deac21e853d7864ff87181cd
 #    ContinuousPeaksTest
 #    CountOnesTest
 #    FlipFlopTest
