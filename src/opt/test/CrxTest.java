@@ -84,7 +84,7 @@ public class CrxTest {
 
         //oa[0] = new RandomizedHillClimbing(nnop[0]);
         oa[1] = new SimulatedAnnealing(1, 2, nnop[1]);
-        oa[2] = new StandardGeneticAlgorithm(2000, 100, 10, nnop[2]);
+        oa[2] = new StandardGeneticAlgorithm(2500, 100, 10, nnop[2]);
 
         for(int i = 1; i < oa.length; i++) {
 
