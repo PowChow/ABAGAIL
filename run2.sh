@@ -1,4 +1,4 @@
-CORES=10
+CORES=2
 OUTPUT=$HOME/${OUTPUT:-results_new}
 
 array=(
