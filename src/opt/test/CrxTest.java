@@ -82,11 +82,11 @@ public class CrxTest {
             nnop[i] = new NeuralNetworkOptimizationProblem(set, networks[i], measure);
         }
 
-        oa[0] = new RandomizedHillClimbing(nnop[0]);
-        oa[1] = new SimulatedAnnealing(1E11, .95, nnop[1]);
-        oa[2] = new StandardGeneticAlgorithm(200, 100, 10, nnop[2]);
+        //oa[0] = new RandomizedHillClimbing(nnop[0]);
+        oa[1] = new SimulatedAnnealing(1, 2, nnop[1]);
+        oa[2] = new StandardGeneticAlgorithm(2000, 100, 10, nnop[2]);
 
-        for(int i = 0; i < oa.length; i++) {
+        for(int i = 1; i < oa.length; i++) {
 
             double start = System.nanoTime(), end, trainingTime, testingTime, correct = 0, incorrect = 0;
             for(int j = 0; j < it; j++) {
