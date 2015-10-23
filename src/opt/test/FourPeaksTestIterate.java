@@ -30,19 +30,25 @@ import shared.FixedIterationTrainer;
  * Copied from ContinuousPeaksTest
  * @version 1.0
  */
-public class FourPeaksTest {
+public class FourPeaksTestIterate {
     /** The n value */
-    private static final int N = 200;
-    /** The t value */
-    private static final int T = N / 5;
+
+	/** The t value */
     
     public static void main(String[] args) {
-    	int it = args.length > 0 ? Integer.parseInt(args[0]): 200;
-    	double start, end, trainingTime, accuracy; 
     	
-        int[] ranges = new int[N];
+    	int N = args.length > 0 ? Integer.parseInt(args[0]): 200;
+    	int T = N / 5;
+    	int[] ranges = new int[N];
+        int i = 0;
+    	double start, end, trainingTime;
+    	
+    	System.out.println("N: " + N);
+    	int global_optimum = (N-(T+1)+N);
+    	System.out.println("Global Optimum, "+ global_optimum + "," + i);
+    	
         Arrays.fill(ranges, 2);
-        
+    	
         EvaluationFunction ef = new FourPeaksEvaluationFunction(T);
         Distribution odd = new DiscreteUniformDistribution(ranges);
         NeighborFunction nf = new DiscreteChangeOneNeighbor(ranges);
@@ -52,57 +58,61 @@ public class FourPeaksTest {
         HillClimbingProblem hcp = new GenericHillClimbingProblem(ef, odd, nf);
         GeneticAlgorithmProblem gap = new GenericGeneticAlgorithmProblem(ef, odd, mf, cf);
         ProbabilisticOptimizationProblem pop = new GenericProbabilisticOptimizationProblem(ef, odd, df);
+        FixedIterationTrainer fit = null;
         
-        int global_optimum = (N-(T+1) + N);
-        System.out.println("Global Optimum: %s, %d,%.2f\n", it, "time", global_optimum);
-        
+
         //RandomizedHillClimbing
         RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
-        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, it);
-        //System.out.println("RHC: " + ef.value(rhc.getOptimal()));
-        
         start = System.nanoTime();
-        fit.train();
+
+        fit = new FixedIterationTrainer(rhc, i, ef);
+        //System.out.println("RHC: " + ef.value(rhc.getOptimal()));        
+        i = fit.train(global_optimum);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
+        //System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
+        System.out.println("RHC: " + ef.value(rhc.getOptimal()) + "," + i + ',' + trainingTime);
         
         //SimulatedAnnealing
         SimulatedAnnealing sa = new SimulatedAnnealing(1E11, .95, hcp);
-        fit = new FixedIterationTrainer(sa, it);
-        //System.out.println("SA: " + ef.value(sa.getOptimal()));
-        
         start = System.nanoTime();
-        fit.train();
+        fit = new FixedIterationTrainer(sa, i, ef);
+        //System.out.println("SA: " + ef.value(sa.getOptimal()));
+        i = fit.train(global_optimum);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
+        //System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
+        System.out.println("SA: " + ef.value(sa.getOptimal()) + "," + i + ',' + trainingTime);
+
         
         //GENETIC ALGORITHM
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 100, 10, gap);
-        fit = new FixedIterationTrainer(ga, it);
+        fit = new FixedIterationTrainer(ga, i, ef);
         //System.out.println("GA: " + ef.value(ga.getOptimal()));
         
         start = System.nanoTime();
-        fit.train();
+        i = fit.train(global_optimum);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        System.out.printf("%s,%d,%.2f,%.2f\n","GA",it, trainingTime, ef.value(ga.getOptimal()));
+        //System.out.printf("%s,%d,%.2f,%.2f\n","GA",it, trainingTime, ef.value(ga.getOptimal()));
+        System.out.println("GA: " + ef.value(ga.getOptimal()) + "," + i + ',' + trainingTime);
 
         
         //MIMIC
         MIMIC mimic = new MIMIC(200, 20, pop);
-        fit = new FixedIterationTrainer(mimic, it);
+        fit = new FixedIterationTrainer(mimic, i, ef);
         //System.out.println("MIMIC: " + ef.value(mimic.getOptimal()));
         
         start = System.nanoTime();
-        fit.train();
+        i = fit.train(global_optimum);
         end = System.nanoTime();
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
-        System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
+        //System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
+        System.out.println("SA: " + ef.value(mimic.getOptimal()) + "," + i + ',' + trainingTime);
+
     }
 }
