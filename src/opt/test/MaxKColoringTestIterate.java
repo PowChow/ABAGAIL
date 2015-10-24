@@ -78,7 +78,7 @@ public class MaxKColoringTest {
         FixedIterationTrainer fit = null;
         double result[] = new double[100];
         double runtime[] = new double[100];
-        boolean conflict[] = new boolean[100];
+        //boolean conflict[] = new boolean[100];
         for (int n=0; n<100; n++){
          RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp); 
          System.out.println("Starting Point: " + ef.value(rhc.getOptimal()));
@@ -89,11 +89,11 @@ public class MaxKColoringTest {
              result[i] = ef.value(rhc.getOptimal());
 	     double end = System.nanoTime();
 	     runtime[i] = (end - start)  / Math.pow(10,9);
-	     conflict[i] = ef.foundConflict(1);
+	    // conflict[i] = ef.foundConflict(1);
         }
         System.out.println("RHC: " + Arrays.toString(result));
         System.out.println("Runtime: " + Arrays.toString(runtime));
-        System.out.println("Conflicts: " + Arrays.toString(conflict));
+        //System.out.println("Conflicts: " + Arrays.toString(conflict));
 }
 
         double temperature[] = new double[500];
@@ -108,13 +108,13 @@ public class MaxKColoringTest {
             result[i] = ef.value(sa.getOptimal());
 	     double end = System.nanoTime();
 	     runtime[i] = (end - start)  / Math.pow(10,9);
-             conflict[i] = ef.foundConflict(1);
+         //    conflict[i] = ef.foundConflict(1);
          }
          System.out.println("SA: " + Arrays.toString(result));
          System.out.println("T: " + temperature[n]);
          System.out.println("C: " + cooling[n]);
          System.out.println("Runtime: " + Arrays.toString(runtime));
-         System.out.println("Conflicts: " + Arrays.toString(conflict));
+         //System.out.println("Conflicts: " + Arrays.toString(conflict));
         }
         
 
@@ -134,14 +134,14 @@ int populationSize[] = new int[100];
              result[i] = ef.value(ga.getOptimal());
 	     double end = System.nanoTime();
 	     runtime[i] = (end - start)  / Math.pow(10,9);
-             conflict[i] = ef.foundConflict(1);
+         //    conflict[i] = ef.foundConflict(1);
          }
          System.out.println("GA: " + Arrays.toString(result));
          System.out.println("populationSize: " + populationSize[n]);
          System.out.println("toMate: " + toMate[n]);
          System.out.println("toMutate: " + toMutate[n]);
   	 System.out.println("Runtime: " + Arrays.toString(runtime));
-         System.out.println("Conflicts: " + Arrays.toString(conflict));
+        // System.out.println("Conflicts: " + Arrays.toString(conflict));
         }
 
         int samples[] = new int[100];
@@ -169,7 +169,7 @@ int populationSize[] = new int[100];
   	System.out.println("sample: " + samples[n]);
   	System.out.println("tokeep: " + tokeep[n]);
   	System.out.println("Runtime: " + Arrays.toString(runtime));
-        System.out.println("Conflicts: " + Arrays.toString(conflict));
+    //    System.out.println("Conflicts: " + Arrays.toString(conflict));
 	}
     }
 }
