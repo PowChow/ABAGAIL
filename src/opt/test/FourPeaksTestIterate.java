@@ -112,7 +112,7 @@ public class FourPeaksTestIterate {
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
         //System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
-        System.out.println("SA: " + ef.value(mimic.getOptimal()) + "," + i + ',' + trainingTime);
+        System.out.println("Mimic: " + ef.value(mimic.getOptimal()) + "," + i + ',' + trainingTime);
 
     }
 }
