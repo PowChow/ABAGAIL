@@ -48,7 +48,7 @@ public class MaxKColoringTest {
      */
     public static void main(String[] args) {
     	int it = args.length > 0 ? Integer.parseInt(args[0]): 1000;
-    	double start, end, trainingTime, accuracy;
+    	double start, end, trainingTime;
     	
         Random random = new Random(N*L);
         // create the random velocity
@@ -80,7 +80,7 @@ public class MaxKColoringTest {
         //RANDOMIZED HILL CLIMBING
         long starttime = System.currentTimeMillis();
         RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
-        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, it);
+        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 10000, ef);
         
         start = System.nanoTime();
         fit.train();
@@ -98,7 +98,7 @@ public class MaxKColoringTest {
         //SIMULATED ANNEALING
         starttime = System.currentTimeMillis();
         SimulatedAnnealing sa = new SimulatedAnnealing(1E12, .1, hcp);
-        fit = new FixedIterationTrainer(sa, it);
+        fit = new FixedIterationTrainer(sa, 10000, ef);
         
         start = System.nanoTime();
         fit.train();
@@ -116,7 +116,7 @@ public class MaxKColoringTest {
         //GENETIC ALGORITHM
         starttime = System.currentTimeMillis();
         StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 10, 60, gap);
-        fit = new FixedIterationTrainer(ga, it);
+        fit = new FixedIterationTrainer(ga, 10000, ef);
         
         start = System.nanoTime();
         fit.train();
@@ -134,7 +134,7 @@ public class MaxKColoringTest {
         //MIMIC
         starttime = System.currentTimeMillis();
         MIMIC mimic = new MIMIC(200, 100, pop);
-        fit = new FixedIterationTrainer(mimic, it);
+        fit = new FixedIterationTrainer(mimic, 10000, ef);
 
         start = System.nanoTime();
         fit.train();
