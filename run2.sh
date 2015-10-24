@@ -1,15 +1,15 @@
-CORES=10
+CORES=2
 OUTPUT=$HOME/${OUTPUT:-results_new}
 
 array=(
-     CrxTest
+#     CrxTest
 #    ContinuousPeaksTest
 #    CountOnesTest
 #    FlipFlopTest
 #    FourPeaksTest
 #    KnapsackTest
 #    MaxKColoringTest 
-#    NQueensTest
+     NQueensTest
 #    TravelingSalesmanTest
 )
 
@@ -34,7 +34,7 @@ for j in "${array[@]}";do
             set_header ${j}
         fi
 
-        java -cp ABAGAIL.jar opt.test.${j} ${i} >| /tmp/${j}${i}.csv &
+        java -cp ABAGAIL.jar opt.test.${j} ${i} >| ${OUTPUT}/${j}${i}.csv &
 
         if [[ $(expr $count % ${CORES}) -eq 0 ]]; then
             # wait for cores to free up
@@ -43,6 +43,6 @@ for j in "${array[@]}";do
     done
     # catch overflow
     wait
-    cat /tmp/${j}*.csv >> /tmp/${OUTPUT}/${j}.csv
-    rm -f /tmp/${j}*.csv
+    cat tmp${j}*.csv >> ${OUTPUT}/${j}.csv
+    rm -f tmp/${j}*.csv
 done
