@@ -43,7 +43,7 @@ public class FourPeaksTestIterate {
         int i = 0;
     	double start, end, trainingTime;
     	
-    	System.out.println("N: " + N);
+    	//System.out.println("N: " + N);
     	int global_optimum = (N-(T+1)+N);
     	System.out.println("Global Optimum, "+ N + "," + global_optimum + "," + i);
     	
