@@ -45,7 +45,7 @@ public class FourPeaksTestIterate {
     	
     	System.out.println("N: " + N);
     	int global_optimum = (N-(T+1)+N);
-    	System.out.println("Global Optimum, "+ global_optimum + "," + i);
+    	System.out.println("Global Optimum, "+ N + "," + global_optimum + "," + i);
     	
         Arrays.fill(ranges, 2);
     	
@@ -72,7 +72,7 @@ public class FourPeaksTestIterate {
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
         //System.out.printf("%s,%d,%.2f,%.2f\n","RHC",it, trainingTime, ef.value(rhc.getOptimal()));
-        System.out.println("RHC: " + ef.value(rhc.getOptimal()) + "," + i + ',' + trainingTime);
+        System.out.println("RHC, " + N + "," + ef.value(rhc.getOptimal()) + "," + i + ',' + trainingTime);
         
         //SimulatedAnnealing
         SimulatedAnnealing sa = new SimulatedAnnealing(1E11, .95, hcp);
@@ -84,7 +84,7 @@ public class FourPeaksTestIterate {
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
         //System.out.printf("%s,%d,%.2f,%.2f\n","SA",it, trainingTime, ef.value(sa.getOptimal()));
-        System.out.println("SA: " + ef.value(sa.getOptimal()) + "," + i + ',' + trainingTime);
+        System.out.println("SA, " + N + "," + ef.value(sa.getOptimal()) + "," + i + ',' + trainingTime);
 
         
         //GENETIC ALGORITHM
@@ -98,7 +98,7 @@ public class FourPeaksTestIterate {
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
         //System.out.printf("%s,%d,%.2f,%.2f\n","GA",it, trainingTime, ef.value(ga.getOptimal()));
-        System.out.println("GA: " + ef.value(ga.getOptimal()) + "," + i + ',' + trainingTime);
+        System.out.println("GA, " + N + "," + ef.value(ga.getOptimal()) + "," + i + ',' + trainingTime);
 
         
         //MIMIC
@@ -112,7 +112,7 @@ public class FourPeaksTestIterate {
         trainingTime = end - start;
         trainingTime /= Math.pow(10, 9);
         //System.out.printf("%s,%d,%.2f,%.2f\n","MIMIC",it, trainingTime, ef.value(mimic.getOptimal()));
-        System.out.println("Mimic: " + ef.value(mimic.getOptimal()) + "," + i + ',' + trainingTime);
+        System.out.println("Mimic, " + N + "," + ef.value(mimic.getOptimal()) + "," + i + ',' + trainingTime);
 
     }
 }
