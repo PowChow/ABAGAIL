@@ -27,7 +27,7 @@ function set_header {
 }
 
 for j in "${array[@]}";do
-    for i in $(seq 1 20 10001);do
+    for i in $(seq 1 10 500);do
         count=$((count+1))
 
         if [[ $count -eq 0 ]]; then
@@ -43,6 +43,6 @@ for j in "${array[@]}";do
     done
     # catch overflow
     wait
-    cat tmp${j}*.csv >> ${OUTPUT}/${j}.csv
-    rm -f tmp/${j}*.csv
+    cat /tmp/${j}*.csv >> ${OUTPUT}/${j}.csv
+    rm -f /tmp/${j}*.csv
 done

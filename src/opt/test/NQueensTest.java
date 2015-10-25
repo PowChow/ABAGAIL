@@ -35,7 +35,7 @@ import shared.FixedIterationTrainer;
  */
 public class NQueensTest {
     /** The n value */
-    private static final int N = 10;
+    private static final int N = 500;
     /** The t value */
     
     public static void main(String[] args) {
